@@ -369,7 +369,7 @@
   </update>
 
 
-  <select id="findAllItems" resultType="com.li.backoffice.model.Items">
+  <select id="findAllItems" resultType="Items">
     SELECT  * FROM items;
   </select>
 
