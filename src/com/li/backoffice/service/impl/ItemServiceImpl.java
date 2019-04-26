@@ -4,9 +4,11 @@ import com.li.backoffice.mapper.ItemsMapper;
 import com.li.backoffice.model.Items;
 import com.li.backoffice.service.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ItemServiceImpl implements IItemService {
 
     @Autowired

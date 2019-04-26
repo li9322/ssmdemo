@@ -10,6 +10,6 @@ public class TestController {
     @RequestMapping("t1")
     public String test(){
         System.out.println("111");
-        return "user/list";
+        return "user/test";
     }
 }
