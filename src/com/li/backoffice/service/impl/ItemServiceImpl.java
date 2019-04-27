@@ -5,10 +5,12 @@ import com.li.backoffice.model.Items;
 import com.li.backoffice.service.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class ItemServiceImpl implements IItemService {
 
     @Autowired
@@ -26,9 +28,12 @@ public class ItemServiceImpl implements IItemService {
 
     @Override
     public void saveOrUpdate(Items items) {
-        if (items.getId() == null)
+        if (items.getId() == null){
             itemsMapper.insert(items);
-        itemsMapper.updateByPrimaryKey(items);
+//            int i=10/0;
+        }else {
+            itemsMapper.updateByPrimaryKeySelective(items);
+        }
     }
 
     @Override
