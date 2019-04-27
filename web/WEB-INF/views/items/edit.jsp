@@ -11,8 +11,24 @@
 <head>
     <title>编辑商品</title>
 </head>
+<script src="${pageContext.request.contextPath}/js/jquery-1.8.3.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
+<script>
+    function submitImage() {
+        alert("提交图片到后台")
+        //封装请求
+        var options={
+            type:'post',
+            url:'${pageContext.request.contextPath}/upload/itemspic.do',
+            success:function (respData) {
+                console.log(respData);
+            }
+        }
+        $('#itemsForm').ajaxSubmit(options)
+    }
+</script>
 <body>
-<form action="${pageContext.request.contextPath}/items/update.do" method="post">
+<form id="itemsForm" action="${pageContext.request.contextPath}/items/update.do" method="post">
     <table border="1">
         <caption>编辑商品</caption>
         <tr>
@@ -31,8 +47,8 @@
         <tr>
             <td>图片</td>
             <td>
-                <img src="${items.pic}"/>
-                <input type="file">
+                <img src="${items.pic}" width="100px" height="100px"/>
+                <input type="file" name="itemspic1" onchange="submitImage()">
             </td>
         </tr>
         <tr>
