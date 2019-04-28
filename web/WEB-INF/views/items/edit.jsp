@@ -15,16 +15,22 @@
 <script src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
 <script>
     function submitImage() {
-        alert("提交图片到后台")
+        alert("提交图片到后台");
         //封装请求
         var options={
             type:'post',
-            url:'${pageContext.request.contextPath}/upload/itemspic.do',
+            url:'${pageContext.request.contextPath}/upload/itemsPic.do',
+            data:{
+                fileName:'itemspic1'
+            },
             success:function (respData) {
                 console.log(respData);
+                var jsonObj = $.parseJSON(respData);
+                $("#showImg1").attr("src",jsonObj.imgUrl);
+                $("#hidenPic").val(jsonObj.imgUrl);
             }
-        }
-        $('#itemsForm').ajaxSubmit(options)
+        };
+        $('#itemsForm').ajaxSubmit(options);
     }
 </script>
 <body>
@@ -47,8 +53,9 @@
         <tr>
             <td>图片</td>
             <td>
-                <img src="${items.pic}" width="100px" height="100px"/>
+                <img id="showImg1" alt="" src="${items.pic}" width="100px" height="100px"/><br/>
                 <input type="file" name="itemspic1" onchange="submitImage()">
+                <input type="hidden" name="pic" id="hidenPic">
             </td>
         </tr>
         <tr>

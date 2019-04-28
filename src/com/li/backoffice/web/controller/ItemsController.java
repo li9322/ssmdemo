@@ -30,13 +30,13 @@ public class ItemsController {
     @RequestMapping("save")
     public String save() {
         Items items = new Items();
-        items.setName("iphone x");
-        items.setPrice(5439f);
-        items.setDetail("挺好使的");
+        items.setName("iphone xs1");
+        items.setPrice(6439.01f);
+        items.setDetail("挺好使的,还升级了，这个是同款");
         items.setCreatetime(new Date());
 
         itemService.saveOrUpdate(items);
-        return "/items/list";
+        return "forward:list.do";
     }
 
     @RequestMapping("delete")
