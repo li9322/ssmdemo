@@ -5,6 +5,6 @@
     <title></title>
   </head>
   <body>
-    this is index
+    <jsp:forward page="${pageContext.request.contextPath}/login.do"/>
   </body>
 </html>

@@ -63,4 +63,10 @@ public class ItemsController {
         itemService.saveOrUpdate(items);
         return "forward:list.do";
     }
+
+    @RequestMapping("hello")
+    public String hello(Model model){
+        model.addAttribute("myname","java to freemark");
+        return "items/hello";
+    }
 }

@@ -23,11 +23,12 @@
             data:{
                 fileName:'itemspic1'
             },
+            dataType:'json',
             success:function (respData) {
-                console.log(respData);
-                var jsonObj = $.parseJSON(respData);
-                $("#showImg1").attr("src",jsonObj.imgUrl);
-                $("#hidenPic").val(jsonObj.imgUrl);
+                console.log(respData.imgUrl);
+                // var jsonObj = $.parseJSON(respData);
+                $("#showImg1").attr('src',respData.imgUrl);
+               // $("#hidenPic").val(respData.imgUrl);
             }
         };
         $('#itemsForm').ajaxSubmit(options);
